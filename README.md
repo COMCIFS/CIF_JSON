@@ -1,4 +1,4 @@
-# JSON representation of CIF information (DRAFT)
+# JSON representation of CIF information
 
 ## Introduction
 
