@@ -176,15 +176,18 @@ transmission of multiple CIF-JSON objects.
          "_flight.vector":["0.25","1.2(15)","-0.01(12)"],
          "_dataname.table":[{"save":"222", "mode":"full", "url":"http:/bit.ly/2"}],
          "_flight.bearing":["221.45(7)"],
-         "_x.id":["1","2","3","4"],
-         "_y":["4.23(14)","11.9(3)","0.2(4)",false],
-         "_z":[["a","a","a","c"],
-               ["c","a","c","a"],
-               ["b","a","a","a"],
-               false],
-         "_alpha":["1.5e-6(2)","2.1e-6(11)","5.1e-3(4)",null],
-         "_q.key":["xxp","yyx"],
-         "_q.access":[{"s":"2",  "k":"-5"},{"s":"1",  "k":"-2"}],
+         "loop": {"_x.id":["1","2","3","4"],
+                  "_y":["4.23(14)","11.9(3)","0.2(4)",false],
+                  "_z":[["a","a","a","c"],
+                       ["c","a","c","a"],
+                       ["b","a","a","a"],
+                       false],
+                  "_alpha":["1.5e-6(2)","2.1e-6(11)","5.1e-3(4)",null]
+                  },
+         "loop": {"_q.key":["xxp","yyx"], 
+                  "_q.access":[{"s":"2",  "k":"-5"},{"s":"1",  "k":"-2"}]
+                  },
+
          "_dataname.chapter":["1.2"],
          "_dataname.verylong":["This contains one very long line that we wrap around using the excellent CIF2 line expansion protocol."]
          },
@@ -192,9 +195,11 @@ transmission of multiple CIF-JSON objects.
         "_abc":["xyz"],
         "Frames":
            {"internal":{"_abc":["yzx"],
-                        "_r.fruit":["apple","pear"],
-                        "_r.colour":["red","green"]}
+                        "loop": {"_r.fruit":["apple","pear"], 
+                                 "_r.colour":["red","green"]
+                                }
                         }
+           }
            }
     }
 }
