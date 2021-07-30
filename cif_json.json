@@ -36,6 +36,8 @@
 
             "^_[^A-Z\u0000-\u0020]+$":      {
 
+              "id":                       "#values",
+
               "title":                    "values",
 
               "description":              "An array of all the values taken by a CIF data item",
@@ -119,6 +121,20 @@
           },
 
           "properties":           {
+
+            "Loop":               {
+
+              "type":                 "object",
+
+              "patternProperties":    {
+
+                "^_[^A-Z\u0000-\u0020]+$":   { "$ref": "#values" }
+
+              },
+
+              "additionalProperties": { "not": {} }
+
+            },
 
             "Frames":               {
 
