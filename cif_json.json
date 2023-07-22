@@ -120,6 +120,20 @@
 
           "properties":           {
 
+            "Loop":               {
+
+              "type":                 "array",
+
+              "patternProperties":    {
+
+                "^_[^A-Z\u0000-\u0020]+$":   { "$ref": "#values" }
+
+              },
+
+              "additionalProperties": { "not": {} }
+
+            },
+
             "Frames":               {
 
               "type":                 "object",
