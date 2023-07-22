@@ -190,9 +190,8 @@ transmission of multiple CIF-JSON objects.
          "_q.access":[{"s":"2",  "k":"-5"},{"s":"1",  "k":"-2"}],
          "_dataname.chapter":["1.2"],
          "_dataname.verylong":["This contains one very long line that we wrap around using the excellent CIF2 line expansion protocol."],
-         "Loops":
-            [["_x.id","_y","_z","_alpha"],
-             ["_q.key","_q.access"]]
+         "Loops":[["_x.id","_y","_z","_alpha"],
+                  ["_q.key","_q.access"]]
         },
      "another_block":
        {"_abc":["xyz"],
