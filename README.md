@@ -36,7 +36,7 @@ are described in the introduction.
 
 1. The JSON file must conform to the i-JSON standard [RFC7493](https://tools.ietf.org/html/rfc7493)
 1. All names used for CIF data block headers, CIF data names, and CIF save block headers must be represented in CIF-JSON in
-Unicode case-normal form (also referred to as “lower-case” below), and otherwise conform to the characterset restrictions
+Unicode case-normal form (also referred to as "lower-case" below), and otherwise conform to the characterset restrictions
 of the CIF2 syntax.
 
 ### The CIF-JSON object
@@ -67,6 +67,9 @@ category. In other words, such entries would belong to the same row if these dat
   are the same as the names in the CIF table, including case. The values in the CIF table are represented in the same
   way as other CIF data values
 
+1. If the CIF data block includes loops, the JSON datablock object must contain the special item named `Loops`.
+The value of this item is a JSON array of arrays. Each inner array contains the data names of items that are present
+in the same loop in the data block. The outer array contains only the arrays of data names.
 1. If the CIF data block includes save frames (currently only used in dictionaries),
 the JSON datablock object must contain the special item named `Frames`. The value of this item
 is a JSON object. Each item in this object corresponds to a save frame
@@ -168,7 +171,7 @@ transmission of multiple CIF-JSON objects.
 {"CIF-JSON":
     {"Metadata":{"cif-version":"2.0",
                  "schema-name":"CIF-JSON",
-                 "schema-version":"1.0.0",
+                 "schema-version":"1.0.1",
                  "schema-uri":"http://www.iucr.org/resources/cif/cif-json.txt"
                  },
      "example":
@@ -186,16 +189,21 @@ transmission of multiple CIF-JSON objects.
          "_q.key":["xxp","yyx"],
          "_q.access":[{"s":"2",  "k":"-5"},{"s":"1",  "k":"-2"}],
          "_dataname.chapter":["1.2"],
-         "_dataname.verylong":["This contains one very long line that we wrap around using the excellent CIF2 line expansion protocol."]
-         },
-     "another_block":{
-        "_abc":["xyz"],
+         "_dataname.verylong":["This contains one very long line that we wrap around using the excellent CIF2 line expansion protocol."],
+         "Loops":
+            [["_x.id","_y","_z","_alpha"],
+             ["_q.key","_q.access"]]
+        },
+     "another_block":
+       {"_abc":["xyz"],
         "Frames":
            {"internal":{"_abc":["yzx"],
                         "_r.fruit":["apple","pear"],
-                        "_r.colour":["red","green"]}
-                        }
+                        "_r.colour":["red","green"],
+                        "Loops":[["_r.fruit", "_r.colour"]]
+                       }
            }
+       }
     }
 }
 ```
